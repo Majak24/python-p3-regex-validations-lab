@@ -1,13 +1,25 @@
 import re
 
-# NOTE: There are only a few tests included, so multiple solutions will work.
-# Feel free to encourage students to find oversights and add tests to this lab!
+# Updated name pattern to handle "D'Angelo" correctly
+name_pattern = r'^[A-Z](?:[a-z]+|\'[A-Z])[a-z]*(?:[-\' ][A-Za-z][a-z]*)*$'
 
-name = r""
-name_regex = re.compile(name)
+# Phone number pattern (unchanged)
+phone_pattern = r'^(\d{10}|\d{3}-\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4})$'
 
-phone_number = r""
-phone_regex = re.compile(phone_number)
+# Email address pattern (unchanged)
+email_pattern = r'^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
-email_address = r""
-email_regex = re.compile(email_address)
+# Compile the patterns
+name_regex = re.compile(name_pattern)
+phone_regex = re.compile(phone_pattern)
+email_regex = re.compile(email_pattern)
+
+# Test functions
+def is_valid_name(name):
+    return bool(name_regex.fullmatch(name))
+
+def is_valid_phone_number(phone):
+    return bool(phone_regex.fullmatch(phone))
+
+def is_valid_email(email):
+    return bool(email_regex.fullmatch(email))
